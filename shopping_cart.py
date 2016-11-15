@@ -22,8 +22,8 @@ def create_list(new_list):
         while(True):
             user_new_list_choice = raw_input("Would you like to: \nA. add an item to this list or \nB. go back to main menu?")
             if user_new_list_choice.lower() == "a": 
-                new_item = raw_input("OK - what item do you want to add to this list?").lower()
-                add_to_list(new_list, new_item)
+                new_item = raw_input("OK - what do you want to add to this list?\nYou can add multiple items by separating each with a space and comma.").lower()
+                add_to_list(new_list, new_items)
             else:
                 menu()
     return True     #will this get me bakc to the menu whiel loop?
@@ -35,15 +35,22 @@ def dive_list(current_list):
         if dive_user_choice == "a":
             print dictionary_of_lists[current_list]
         elif dive_user_choice == "b":
-            new_item = raw_input("OK - what item do you want to add to this list?").lower()
-            add_to_list(current_list, new_item)
+            new_item = raw_input("OK - what do you want to add to this list?\nYou can add multiple items by separating each with a space and comma.").lower()
+            add_to_list(current_list, new_items)
         else:
             menu()
 
 
-def add_to_list(list_key, item):
-    
-
+def add_to_list(list_key, items):
+    list_items = items.split(", ")
+    for item in list_items:
+        if item in dictionary_of_lists[list_key]:
+            del list_items[list_key]
+        elif item == "":
+            del list_items{list_key]
+        else:
+            pass
+    dictionary_of_lists[list_key] = dictionary_of_lists[list_key] + list_items
 
 
 
